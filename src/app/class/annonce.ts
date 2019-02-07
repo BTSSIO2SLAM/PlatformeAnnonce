@@ -1,4 +1,4 @@
-import { Ville } from './class/ville';
+import { Ville } from './ville';
 import { Categorie } from './categorie';
 import { Utilisateur } from './utilisateur';
 
