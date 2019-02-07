@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -10,6 +10,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -18,14 +20,18 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AppComponent,
     HomepageComponent,
     MyaccountComponent,
-    AnnonceComponent
+    AnnonceComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatMenuModule,MatToolbarModule
+    MatMenuModule,MatToolbarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
