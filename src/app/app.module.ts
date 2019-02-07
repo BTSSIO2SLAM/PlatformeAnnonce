@@ -10,6 +10,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 
@@ -25,7 +27,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatMenuModule,MatToolbarModule
+    MatMenuModule,MatToolbarModule,MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

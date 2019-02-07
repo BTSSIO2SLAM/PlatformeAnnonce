@@ -1,1 +1,17 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* Couleur de la bar en haut de la nav */
+mat-card {
+    background: url('./sun.jpg');
+    font-family: 'Elephant', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2em;
+    height: 300px;
+    text-align: center;
+}
+
+.navbar{
+
+    background-color: #E8CC06;
+   
+}
+
