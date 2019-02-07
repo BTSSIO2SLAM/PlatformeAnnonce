@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.loading = true;
 
         if(this.authenticationService.login(this.f.pseudo.value, this.f.password.value)){
-          this.router.navigate(['/homepage']);
+          this.router.navigate(['/myaccount']);
         }
         else{
           this.router.navigate(['/login']);
