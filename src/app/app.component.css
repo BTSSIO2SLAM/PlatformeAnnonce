@@ -3,7 +3,7 @@
 /* Couleur de la bar en haut de la nav */
 mat-card {
     background: url('../assets/sun.jpg');
-    font-family: 'Elephant', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Britannic Bold';
     font-size: 2em;
     height: 300px;
     text-align: center;
@@ -14,4 +14,13 @@ mat-card {
     background-color: #E8CC06;
 
 }
+
+
+li a.nav-link {
+
+color: white;
+font-family: 'Broadway';
+font-size: 1em;
+}
+
 

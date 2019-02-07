@@ -34,3 +34,8 @@
     display: flex;
     flex: 1 1 auto;
 }
+div.card-horizontal:hover{
+    opacity: 0.55;
+    cursor: pointer;
+
+}
