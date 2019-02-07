@@ -1,0 +1,21 @@
+<div class="col-md-6">
+    <h2 class="text-center">Publier une Annonce</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="titre">Titre:</label>
+        <input type="text" formControlName="titre" placeholder="Titre" name="titre" class="form-control" id="titre">
+      </div>
+
+      <div class="form-group">
+        <label for="details">Details :</label>
+        <input formControlName="details" placeholder="details" name="details" class="form-control" id="details">
+      </div>
+
+      <div class="form-group">
+        <label for="prix">Prix :</label>
+        <input type="number" formControlName="prix" placeholder="Lprix" name="prix" class="form-control" id="prix">
+      </div>
+
+      <button class="btn btn-success">Publier l'annonce</button>
+    </form>
+  </div>

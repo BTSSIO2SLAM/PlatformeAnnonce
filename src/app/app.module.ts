@@ -12,6 +12,7 @@ import {MatNativeDateModule,MatDatepickerModule,MatIconModule,MatButtonModule,Ma
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AddAnnonceComponent } from './components/add-annonce/add-annonce.component';
 
 
 
@@ -22,7 +23,8 @@ import { RegisterComponent } from './components/register/register.component';
     MyaccountComponent,
     AnnonceComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddAnnonceComponent
   ],
   imports: [
     BrowserModule,
