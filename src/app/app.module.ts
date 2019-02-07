@@ -3,9 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { MyaccountComponent } from './myaccount/myaccount.component';
-import { AnnonceComponent } from './annonce/annonce.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { MyaccountComponent } from './components/myaccount/myaccount.component';
+import { AnnonceComponent } from './components/annonce/annonce.component';
+import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+
 
 @NgModule({
   declarations: [
@@ -16,7 +22,10 @@ import { AnnonceComponent } from './annonce/annonce.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatMenuModule,MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
