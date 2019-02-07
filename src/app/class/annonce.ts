@@ -5,7 +5,7 @@ import { Utilisateur } from './utilisateur';
 export class Annonce {
     id:number;
     titre:string;
-    libelle:string;
+    details:string;
     prix:number;
     vendeur:Utilisateur;
     categorie:Categorie;

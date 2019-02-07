@@ -34,8 +34,11 @@
     display: flex;
     flex: 1 1 auto;
 }
+/*
+survol d'un article 
+*/
 div.card-horizontal:hover{
-    opacity: 0.55;
+    opacity: 0.75;
     cursor: pointer;
 
 }
