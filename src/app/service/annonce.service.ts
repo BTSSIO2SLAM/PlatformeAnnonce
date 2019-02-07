@@ -1,32 +1,34 @@
 import { Annonce } from './../class/annonce';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Annonce } from '../class/annonce';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnnonceService {
 
-  // constructor(private http: HttpClient) { }
-  // baseUrl: string = 'http://localhost:8080/user-portal/users';
+  listeDesAnnonces: Array<Annonce>;
 
-  // getAnnonces() {
-  //   return this.http.get<Annonce[]>(this.baseUrl);
-  // }
+  constructor() {
 
-  // getAnnonceById(id: number) {
-  //   return this.http.get<Annonce>(this.baseUrl + '/' + id);
-  // }
+    this.listeDesAnnonces = [
+      {"id": 1, "titre": "Switch","details":'Fatigué de rager ! Je vend ma switch :)',"prix": 200, "vendeur": 'Richard', "categorie": 'Console', "ville": 'Saint denis'},
 
-  // createAnnonce(annonce: Annonce) {
-  //   return this.http.post(this.baseUrl, annonce);
-  // }
+    ];
 
-  // updateAnnonce(annonce: Annonce) {
-  //   return this.http.put(this.baseUrl + '/' + annonce.id, annonce);
-  // }
+   }
 
-  // deleteAnnonce(id: number) {
-  //   return this.http.delete(this.baseUrl + '/' + id);
-  // }
+   getAnnonce(): Array<Annonce>{
+
+    return this.listeDesAnnonces;
+   }
+
+   createAnnonce(annonce : Annonce){
+
+      this.listeDesAnnonces.push(annonce);
+      //return true;
+   }
+
+
 }
