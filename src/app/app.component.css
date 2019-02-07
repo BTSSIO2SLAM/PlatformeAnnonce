@@ -2,7 +2,7 @@
 
 /* Couleur de la bar en haut de la nav */
 mat-card {
-    background: url('./sun.jpg');
+    background: url('../assets/sun.jpg');
     font-family: 'Elephant', 'Arial Narrow', Arial, sans-serif;
     font-size: 2em;
     height: 300px;
@@ -13,8 +13,5 @@ mat-card {
 
     background-color: #E8CC06;
    
-}
-body{
-    margin: 0 auto;
 }
 

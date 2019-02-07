@@ -5,14 +5,32 @@
   }
   
   .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+   /* background-image: url('../assets/article_img/sun.jpg');*/
     background-size: cover;
   }
 
+  div.container{
+      background : #F2F2F2;
+      border-radius: 0.2cm;
+  }
   button.about{
       float: right;
   }
 
   .container{
-    margin-top:4em;
+    margin-top:1em;
   }
+
+  div.description{
+      padding-top: 10px;
+  }
+
+  div.row{
+      margin-top: 2em;
+  }
+
+  /* card */
+  .card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
