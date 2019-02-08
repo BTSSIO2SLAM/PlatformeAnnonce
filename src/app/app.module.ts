@@ -9,7 +9,6 @@ import { AnnonceComponent } from './components/annonce/annonce.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatNativeDateModule,MatDatepickerModule,MatIconModule,MatButtonModule,MatCheckboxModule, MatToolbarModule, MatCardModule,MatFormFieldModule,MatInputModule,MatRadioModule,MatListModule,} from  '@angular/material';
-import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddAnnonceComponent } from './components/add-annonce/add-annonce.component';
@@ -44,7 +43,6 @@ import {MatTableModule} from '@angular/material/table';
     MatRadioModule,
     MatListModule,
     MatCardModule,
-    MaterialFileInputModule,
     MatTableModule
   ],
   providers: [],
