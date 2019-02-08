@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Alert } from 'selenium-webdriver';
 import { AnnonceService } from 'src/app/service/annonce.service';
+import { Annonce } from 'src/app/class/annonce'
+import { Photos } from 'src/app/class/photos'
 
 
 @Component({
@@ -10,17 +12,25 @@ import { AnnonceService } from 'src/app/service/annonce.service';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private annonceService : AnnonceService) {
-    
+
+  constructor(private annonceService: AnnonceService) {
+
 
   }
 
   ngOnInit() {
+
   }
 
-  show_article(){
+  listeAnnonce: Array<Annonce> = this.annonceService.getAnnonce();
+  listePhotoAnnonce: Array<Photos> = this.annonceService.getPhotoAnnonce();
 
-   console.log(this.annonceService.getAnnonce());
+  /* fonction qui gére le clic sur un article et récupére son id */
+  show_article(id) {
+
+    console.log(id);
   }
+
+
 
 }
