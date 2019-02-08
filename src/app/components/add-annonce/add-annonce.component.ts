@@ -2,31 +2,34 @@ import { AnnonceService } from './../../service/annonce.service';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import { Annonce } from 'src/app/class/annonce';
 
 @Component({
-  selector: 'app-annonce',
-  templateUrl: './annonce.component.html',
-  styleUrls: ['./annonce.component.css']
+  selector: 'app-add-annonce',
+  templateUrl: './add-annonce.component.html',
+  styleUrls: ['./add-annonce.component.css']
 })
-export class AnnonceComponent implements OnInit {
+export class AddAnnonceComponent implements OnInit {
 
   addForm: FormGroup;
+  dataSource: Array<Annonce>;
+  displayedColumns: string[] = ['id', 'titre', 'details', 'prix'];
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private annonceService: AnnonceService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private annonceService: AnnonceService) { }
 
   ngOnInit() {
+
+    this.dataSource = this.annonceService.getAnnonce();
+
     this.addForm = this.formBuilder.group({
       titre: ['', Validators.required],
-      libelle: ['', Validators.required],
-      photo: ['', Validators.required]
+      details: ['', Validators.required],
+      prix: ['', Validators.required]
     });
   }
 
-    ajouter():void{
-      this.annonceService.createAnnonce(this.addForm.value)
-      .subscribe( data => {
-        this.router.navigate(['homepage']);
-      });
-  }
+    onSubmit() {
+        console.log(this.annonceService.createAnnonce(this.addForm.value));
+    }
 
 }

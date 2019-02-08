@@ -1,3 +1,4 @@
+import { AddAnnonceComponent } from './components/add-annonce/add-annonce.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'annonce', component: AnnonceComponent },
   { path: 'login', component: LoginComponent },
   { path: 'myaccount', component: MyaccountComponent },
+  { path: 'add-annonce', component: AddAnnonceComponent }
 // { path: 'heroes', component: HeroesComponent },
 // { path: 'heroes', component: HeroesComponent },
 ];

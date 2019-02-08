@@ -1,21 +1,79 @@
-<div class="col-md-6">
-    <h2 class="text-center">Publier une Annonce</h2>
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="titre">Titre:</label>
-        <input type="text" formControlName="titre" placeholder="Titre" name="titre" class="form-control" id="titre">
-      </div>
+<br>
+<div class="container">
+  <div class="row">
+    <!-- FORMULAIRE CREATION -->
+    <div class="col-md-4">
+      <div class="card">
+          <div class="card-header">
+            Publier une annonce
+          </div>
+          <div class="card-body">
+            <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="titre">Titre:</label>
+                <input type="text" formControlName="titre" placeholder="Titre" name="titre" class="form-control" id="titre">
+              </div>
 
-      <div class="form-group">
-        <label for="details">Details :</label>
-        <input formControlName="details" placeholder="details" name="details" class="form-control" id="details">
-      </div>
+              <div class="form-group">
+                <label for="details">Details :</label>
+                <textarea rows="5" formControlName="details" placeholder="details" name="details" class="form-control" id="details"></textarea>
+              </div>
 
-      <div class="form-group">
-        <label for="prix">Prix :</label>
-        <input type="number" formControlName="prix" placeholder="Lprix" name="prix" class="form-control" id="prix">
-      </div>
+              <div class="form-group">
+                <label for="prix">Prix :</label>
+                <input type="number" formControlName="prix" placeholder="prix" name="prix" class="form-control" id="prix">
+              </div>
+              <label for="photo">Photo :</label>
+              <div class="custom-file">
+                <label for="photo">Photo :</label>
+                <input type="file" class="custom-file-input" formControlName="photo" placeholder="photo" name="photo" id="photo">
+                <label class="custom-file-label" for="photo">Choose file</label>
+              </div>
 
-      <button class="btn btn-success">Publier l'annonce</button>
-    </form>
+              <hr>
+
+              <button style="background-color: orange" class="btn btn-success">Publier l'annonce</button>
+            </form>
+          </div>
+        </div>
+    </div>
+    <!-- LISTE ANNONCE UTILISATEUR -->
+    <div class="col-md-8">
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Titre </th>
+              <td mat-cell *matCellDef="let element"> {{element.titre}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Details </th>
+              <td mat-cell *matCellDef="let element"> {{element.details}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Prix </th>
+              <td mat-cell *matCellDef="let element"> {{element.prix}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+    </div>
   </div>
+
+</div>

@@ -10,4 +10,5 @@ export class Annonce {
     vendeur:Utilisateur;
     categorie:Categorie;
     ville:Ville;
+    photo:string;
 }
