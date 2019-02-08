@@ -1,3 +1,5 @@
+import { Annonce } from './../class/annonce';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Annonce } from '../class/annonce';
 import { Photos } from '../class/photos';
