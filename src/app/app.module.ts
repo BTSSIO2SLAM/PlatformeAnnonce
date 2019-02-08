@@ -23,7 +23,7 @@ import {MatTableModule} from '@angular/material/table';
     AnnonceComponent,
     LoginComponent,
     RegisterComponent,
-    AddAnnonceComponent
+    AddAnnonceComponent,
   ],
   imports: [
     BrowserModule,

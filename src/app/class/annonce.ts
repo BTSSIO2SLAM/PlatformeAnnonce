@@ -7,8 +7,8 @@ export class Annonce {
     titre:string;
     details:string;
     prix:number;
-    vendeur:Utilisateur;
-    categorie:Categorie;
-    ville:Ville;
-    photo:string;
+   // vendeur:Utilisateur;
+   // categorie:Categorie;
+   // ville:Ville;
+    pathPhoto:string;
 }

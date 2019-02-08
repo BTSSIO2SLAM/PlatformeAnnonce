@@ -1,7 +1,6 @@
 import { Annonce } from './../class/annonce';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Annonce } from '../class/annonce';
 import { Photos } from '../class/photos';
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,7 @@ export class AnnonceService {
 
     this.listeDesAnnonces = [
       { "id": 1, "titre": "Switch", "details": 'Fatigué de rager ! Je vend ma switch :)', "prix": 200, "vendeur": 1, "categorie": 'Console', "ville": 'Saint denis', "pathPhoto":'./assets/article_img/switch.jpg'},
-      { "id": 2, "titre": "Moto", "details": 'Fatigué de rager ! Je vend ma switch :)', "prix": 200, "vendeur": 1, "categorie": 'Console', "ville": 'Saint denis', "pathPhoto":'./assets/article_img/moto.JPG' },
+      { "id": 2, "titre": "Moto", "details": 'Vend moto qui date de 20 ans ! Idéal pour faire la route du litto et éviter les rochers', "prix": 200, "vendeur": 1, "categorie": 'Console', "ville": 'Saint denis', "pathPhoto":'./assets/article_img/moto.JPG' },
 
     ];
 

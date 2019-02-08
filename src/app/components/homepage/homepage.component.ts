@@ -28,7 +28,7 @@ export class HomepageComponent implements OnInit {
   /* fonction qui gére le clic sur un article et récupére son id */
   show_article(id) {
 
-    console.log(id);
+   alert("Article :"+id)
   }
 
 

@@ -6,6 +6,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { AnnonceComponent } from './components/annonce/annonce.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyaccountComponent } from './components/myaccount/myaccount.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
@@ -13,8 +14,8 @@ const routes: Routes = [
   { path: 'annonce', component: AnnonceComponent },
   { path: 'login', component: LoginComponent },
   { path: 'myaccount', component: MyaccountComponent },
-  { path: 'add-annonce', component: AddAnnonceComponent }
-// { path: 'heroes', component: HeroesComponent },
+  { path: 'add-annonce', component: AddAnnonceComponent },
+  { path: 'inscription', component: RegisterComponent },
 // { path: 'heroes', component: HeroesComponent },
 ];
 
