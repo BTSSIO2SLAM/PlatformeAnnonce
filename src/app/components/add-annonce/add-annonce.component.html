@@ -31,7 +31,7 @@
 
               <div class="form-group">
                   <label for="exampleFormControlFile1">Photo</label>
-                  <input type="file" formControlName="pathPhoto" placeholder="Choisir une photo" name="photo" class="form-control-file" id="photo">
+                  <input (change)="onFileChange($event)" type="file" formControlName="pathPhoto" placeholder="Choisir une photo" name="photo" class="form-control-file" id="photo">
                 </div>
               <hr>
               <button style="background-color: orange" class="btn btn-success">Publier l'annonce</button>

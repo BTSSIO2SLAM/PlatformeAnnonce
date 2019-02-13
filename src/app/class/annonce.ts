@@ -19,4 +19,5 @@ export class Annonce {
       this.prix = prix;
       this.pathPhoto = pathPhoto;
      }
+
 }

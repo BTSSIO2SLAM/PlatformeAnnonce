@@ -41,20 +41,20 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
         // stop here if form is invalid
         if (this.loginForm.invalid) {
-
             return;
         }
-
         this.loading = true;
 
-        if(this.authenticationService.login(this.f.pseudo.value, this.f.password.value)){
+        if (this.authenticationService.login(this.f.pseudo.value, this.f.password.value)) {
           this.router.navigate(['/myaccount']);
-        }
-        else{
+        } else {
           this.router.navigate(['/login']);
+          alert('identifiants invalide');
+          this.loading = false;
+          this.submitted = false;
         }
+        
     }
 }

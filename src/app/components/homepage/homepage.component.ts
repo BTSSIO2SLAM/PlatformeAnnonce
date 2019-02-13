@@ -14,8 +14,6 @@ export class HomepageComponent implements OnInit {
 
 
   constructor(private annonceService: AnnonceService) {
-
-
   }
 
   ngOnInit() {

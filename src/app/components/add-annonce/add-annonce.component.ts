@@ -1,5 +1,5 @@
 import { AnnonceService } from './../../service/annonce.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import { Annonce } from 'src/app/class/annonce';
@@ -17,7 +17,7 @@ export class AddAnnonceComponent implements OnInit {
   dataSource: MatTableDataSource<Annonce>;
   displayedColumns: string[] = ['id', 'titre', 'details', 'prix'];
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private annonceService: AnnonceService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private annonceService: AnnonceService, private cd: ChangeDetectorRef) { }
 
   listeAnnonce: Array<Annonce> = this.annonceService.getAnnonce();
   listePhotoAnnonce: Array<Photos> = this.annonceService.getPhotoAnnonce();
@@ -26,6 +26,25 @@ export class AddAnnonceComponent implements OnInit {
   show_article(id) {
     console.log(id);
   }
+
+  onFileChange(event) {
+    console.log(event.target.files);
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.addForm.patchValue({
+          file: reader.result
+       });
+
+        // need to run CD since file load runs outside of zone
+        this.cd.markForCheck();
+      };
+    }
+}
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
@@ -41,6 +60,7 @@ export class AddAnnonceComponent implements OnInit {
 
   onSubmit() {
     console.log(this.addForm.value);
+    this.monAnnonce = this.addForm.value;
     this.annonceService.createAnnonce(this.addForm.value);
     this.dataSource.data = this.annonceService.getAnnonce();
     console.log(this.dataSource);
