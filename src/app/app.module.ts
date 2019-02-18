@@ -13,6 +13,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddAnnonceComponent } from './components/add-annonce/add-annonce.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -23,7 +27,7 @@ import {MatTableModule} from '@angular/material/table';
     AnnonceComponent,
     LoginComponent,
     RegisterComponent,
-    AddAnnonceComponent,
+    AddAnnonceComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import {MatTableModule} from '@angular/material/table';
     MatRadioModule,
     MatListModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

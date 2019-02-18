@@ -1,22 +1,21 @@
-<mat-card></mat-card>
+<div class="card mb-3">
+  <img src='../assets/sun.jpg' class="card-img-top" alt="...">
+</div>
+<nav class="navbar navbar-expand-md ">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/homepage">Voir les annonces</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/add-annonce">Publier une annonce</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/homepage" >Voir les annonces</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/add-annonce" >Publier une annonce</a>
-            </li>
-          </ul>
-        </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/login" >Se connecter</a>
-                </li>
-            </ul>
-        </div>
-      </nav>
 <router-outlet></router-outlet>
