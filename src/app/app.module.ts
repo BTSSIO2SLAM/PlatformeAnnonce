@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     AnnonceComponent,
     LoginComponent,
     RegisterComponent,
-    AddAnnonceComponent
+    AddAnnonceComponent,
+    AnnonceComponent
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,13 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
 
+    this.annonceService.getAnnonceList().subscribe(val => {
+
+      this.listeAnnonce = val;
+   
+      });
+
+
   }
 
   listeAnnonce: Array<Annonce> = this.annonceService.getAnnonce();
