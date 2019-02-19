@@ -1,5 +1,5 @@
 import { Annonce } from 'src/app/class/annonce';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AnnonceService } from 'src/app/service/annonce.service';
 
@@ -10,7 +10,10 @@ import { AnnonceService } from 'src/app/service/annonce.service';
 })
 export class AnnonceComponent implements OnInit {
 
+  @Input()
   monAnnonce: Annonce;
+  @Output()
+  sortie = new EventEmitter<boolean>();
 
   constructor(
     private route: ActivatedRoute,
