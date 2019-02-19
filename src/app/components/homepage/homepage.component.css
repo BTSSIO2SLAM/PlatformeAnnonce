@@ -42,3 +42,12 @@ div.card-horizontal:hover{
     cursor: pointer;
 
 }
+
+div.price{
+    float: right;   
+}
+div.price > span{
+
+    font-style: italic;
+    font-weight: bold;
+}

@@ -38,4 +38,11 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['/detail', this.selectedAnnonce.Id]);
   }
 
+
+
+  /* fonction qui gére le clic sur un article et récupére son id */
+  getIdArticle(id) {
+   alert('Article :' + id);
+  }
+
 }
