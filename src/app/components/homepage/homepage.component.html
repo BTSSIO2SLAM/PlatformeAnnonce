@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div *ngFor="let annonce of listeAnnonce">
+    <div *ngFor="let annonce of annonces" (click)="onSelect(annonce)" [class.selected]="annonce === selectedAnnonce">
         <!--Article 1-->
         <div class="row">
             <div class="col-12 mt-3">
@@ -8,13 +8,13 @@
                     <div class="card-horizontal">
                         <div class="card" style="width: 18rem; ">
                             <div class="card-body">
-                                <a routerLink="/annonce/{{annonce.id}}"><img mat-card-image src="{{ annonce.pathPhoto }} "alt="Photo of a Shiba Inu"></a>
+                                <a routerLink="/annonce/{{annonce.Id}}"><img mat-card-image src="{{ annonce.UrlPhoto }} "alt="Photo of a Shiba Inu"></a>
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <h4 class="card-title">{{ annonce.titre }}</h4>
-                            <p class="card-text">{{ annonce.details }}</p>
+                            <h4 class="card-title">{{ annonce.Titre }}</h4>
+                            <p class="card-text">{{ annonce.Details }}</p>
                         </div>
                     </div>
                     <div class="card-footer">

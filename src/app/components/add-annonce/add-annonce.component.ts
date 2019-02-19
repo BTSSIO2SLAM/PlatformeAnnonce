@@ -1,13 +1,7 @@
-import { AnnonceService } from './../../service/annonce.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Annonce } from 'src/app/class/annonce';
-import { Photos } from 'src/app/class/photos';
-import { MatTableDataSource } from '@angular/material';
-import { MatDialog, MatDialogConfig } from '@angular/material';
-import { Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Annonce } from './../../class/annonce';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { AnnonceService } from 'src/app/service/annonce.service';
 
 @Component({
   selector: 'app-add-annonce',
@@ -15,58 +9,42 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./add-annonce.component.css']
 })
 export class AddAnnonceComponent implements OnInit {
-  monAnnonce: Annonce;
-  addForm: FormGroup;
-  dataSource: MatTableDataSource<Annonce>;
-  displayedColumns: string[] = ['id', 'titre', 'details', 'prix'];
 
-  //Définie l'objet file
-  selectedFile: File = null;
+  @Input() annonce: Annonce;
+  @Output() close = new EventEmitter();
+  error: any;
+  navigated = false; // true if navigated here
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private annonceService: AnnonceService, public dialog: MatDialog, private http: HttpClient) { }
+  constructor(
+    private annonceService: AnnonceService,
+    private route: ActivatedRoute
+  ) {}
 
-  listeAnnonce: Array<Annonce> = this.annonceService.getAnnonce();
-  listePhotoAnnonce: Array<Photos> = this.annonceService.getPhotoAnnonce();
-
-  /* fonction qui gére le clic sur un article et récupére son id */
-  show_article(id) {
-    console.log(id);
-  }
-
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
-
-}
-
-onClick(event){
-  const fd = new  FormData();
-  fd.append('image', this.selectedFile, this.selectedFile.name)
-  //this.http.post('http://Addresse');
-
-  
-}
-
-
-  ngOnInit() {
-    
-
-    this.dataSource = new MatTableDataSource();
-    this.dataSource.data = this.annonceService.getAnnonce();
-    this.addForm = this.formBuilder.group({
-      id: ['', Validators.required],
-      titre: ['', Validators.required],
-      details: ['', Validators.required],
-      prix: ['', Validators.required],
-      pathPhoto: ['', Validators.required]
+  ngOnInit(): void {
+    this.route.params.forEach((params: Params) => {
+      if (params['id'] !== undefined) {
+        const id = +params['id'];
+        this.navigated = true;
+        this.annonceService.getAnnonce(id).subscribe(annonce => (this.annonce = annonce));
+      } else {
+        this.navigated = false;
+        this.annonce = new Annonce();
+      }
     });
   }
 
-  onSubmit() {
+  save(): void {
+    this.annonceService.save(this.annonce).subscribe(annonce => {
+      this.annonce = annonce; // saved hero, w/ id if new
+      this.goBack(annonce);
+    }, error => (this.error = error)); // TODO: Display error message
+  }
 
-    this.monAnnonce = this.addForm.value;
-    this.annonceService.createAnnonce(this.addForm.value);
-    this.dataSource.data = this.annonceService.getAnnonce();
-  
+  goBack(savedAnnonce: Annonce = null): void {
+    this.close.emit(savedAnnonce);
+    if (this.navigated) {
+      window.history.back();
+    }
   }
 
 }

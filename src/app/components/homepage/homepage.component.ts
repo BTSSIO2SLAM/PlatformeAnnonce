@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Alert } from 'selenium-webdriver';
 import { AnnonceService } from 'src/app/service/annonce.service';
-import { Annonce } from 'src/app/class/annonce'
-import { Photos } from 'src/app/class/photos'
-
+import { Annonce } from 'src/app/class/annonce';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -12,30 +10,32 @@ import { Photos } from 'src/app/class/photos'
 })
 export class HomepageComponent implements OnInit {
 
+  annonces: Annonce[];
+  selectedAnnonce: Annonce;
+  error: any;
+  showNgFor = false;
 
-  constructor(private annonceService: AnnonceService) {
+  constructor(private router: Router, private annonceService: AnnonceService) {}
+
+  getAnnonces(): void {
+    this.annonceService
+      .getAnnonces()
+      .subscribe(
+        annonces => (this.annonces = annonces),
+        error => (this.error = error)
+      );
   }
 
   ngOnInit() {
-
-    this.annonceService.getAnnonceList().subscribe(val => {
-
-      this.listeAnnonce = val;
-   
-      });
-
-
+    this.getAnnonces();
   }
 
-  listeAnnonce: Array<Annonce> = this.annonceService.getAnnonce();
-  listePhotoAnnonce: Array<Photos> = this.annonceService.getPhotoAnnonce();
-
-  /* fonction qui gére le clic sur un article et récupére son id */
-  show_article(id) {
-
-   alert("Article :"+id)
+  onSelect(annonce: Annonce): void {
+    this.selectedAnnonce = annonce;
   }
 
-
+  gotoDetail(): void {
+    this.router.navigate(['/detail', this.selectedAnnonce.Id]);
+  }
 
 }
