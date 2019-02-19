@@ -1,8 +1,9 @@
 import { Annonce } from './../class/annonce';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Photos } from '../class/photos';
-import { of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,10 +12,9 @@ export class AnnonceService {
   listeDesAnnonces: Array<Annonce>;
   listePhoto: Array<Photos>;
 
-  constructor() {
+  constructor(private http: HttpClient) {
 
     this.listePhoto = [];
-
     this.listeDesAnnonces = [];
 
   }
@@ -25,7 +25,7 @@ export class AnnonceService {
 
   getAnnonceById(id: number) {
     // TODO: send the message _after_ fetching the hero
-    return of(this.listeDesAnnonces.find(annonce => annonce.id === id));
+    return (this.listeDesAnnonces.find(annonce => annonce.id === id));
 
   }
 
@@ -39,6 +39,13 @@ export class AnnonceService {
     this.listeDesAnnonces.push(annonce);
     //return true;
   }
+
+  getAnnonceList(): Observable<any> {
+    //return this.listeTemp;
+    return this.http.get('http://10.1.14.24:59825/api/Annonces');
+   
+  }
+
 
 
 }

@@ -7,6 +7,7 @@ import { AnnonceComponent } from './components/annonce/annonce.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyaccountComponent } from './components/myaccount/myaccount.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ListAnnonceComponent } from './components/myaccount/categories_account/list-annonce/list-annonce.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'myaccount', component: MyaccountComponent },
   { path: 'add-annonce', component: AddAnnonceComponent },
   { path: 'inscription', component: RegisterComponent },
+  //{ path: 'myaccount/annonces', component: ListAnnonceComponent },
 // { path: 'heroes', component: HeroesComponent },
 ];
 
