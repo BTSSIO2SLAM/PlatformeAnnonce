@@ -33,8 +33,21 @@ export class AddAnnonceComponent implements OnInit {
     console.log(id);
   }
 
-  ngOnInit() {
+  onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
 
+}
+
+onClick(event){
+  const fd = new  FormData();
+  fd.append('image', this.selectedFile, this.selectedFile.name)
+  //this.http.post('http://Addresse');
+
+  
+}
+
+
+  ngOnInit() {
     
 
     this.dataSource = new MatTableDataSource();
@@ -49,30 +62,12 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.addForm.value);
+
+    this.monAnnonce = this.addForm.value;
     this.annonceService.createAnnonce(this.addForm.value);
     this.dataSource.data = this.annonceService.getAnnonce();
-    console.log(this.dataSource);
-   // alert('Votre annonce a bien été ajouté !')
-    //upload du fichier
-    this.onUploadFile();
+  
   }
-
-
-  onFileSelected(event){
-      this.selectedFile = <File>event.target.files[0];
-      
-  }
-
-  onUploadFile(){
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post('https://annonce-798b8.appspot.com', fd).subscribe(res => {
-      console.log(res);
-    });
-  }
-
- 
 
 }
 

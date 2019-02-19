@@ -4,11 +4,11 @@
         <!--Article 1-->
         <div class="row">
             <div class="col-12 mt-3">
-                <div class="card" (click)="show_article(annonce.id)">
+                <div class="card">
                     <div class="card-horizontal">
                         <div class="card" style="width: 18rem; ">
                             <div class="card-body">
-                                <img mat-card-image src="{{ annonce.pathPhoto }} "alt="Photo of a Shiba Inu">
+                                <a routerLink="/annonce/{{annonce.id}}"><img mat-card-image src="{{ annonce.pathPhoto }} "alt="Photo of a Shiba Inu"></a>
                             </div>
                         </div>
 

@@ -34,7 +34,7 @@
                   <input type="file" (change)="onFileSelected($event)" formControlName="pathPhoto" placeholder="Choisir une photo" name="photo" class="form-control-file" id="photo">
                 </div>
               <hr>
-              <button style="background-color: orange" class="btn btn-success">Publier l'annonce</button>
+              <button (click)="onClick()" style="background-color: orange" class="btn btn-success">Publier l'annonce</button>
             </form>
           </div>
         </div>

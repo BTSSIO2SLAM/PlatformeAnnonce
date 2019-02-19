@@ -1,6 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Utilisateur } from 'src/app/class/utilisateur'
+import { Utilisateur } from 'src/app/class/utilisateur';
+import { UtilisateurService } from 'src/app/service/utilisateur.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,10 +13,10 @@ import { Utilisateur } from 'src/app/class/utilisateur'
 export class RegisterComponent implements OnInit {
 
   unUtilisateur: Utilisateur;
-  constructor() { }
+
+  constructor(private router: Router, private utilisateurService: UtilisateurService) {  }
 
   ngOnInit() {
-
     this.unUtilisateur = new Utilisateur;
   }
 
@@ -36,7 +39,9 @@ export class RegisterComponent implements OnInit {
     this.unUtilisateur.email = this.profileForm.value.mail;
     this.unUtilisateur.password = this.profileForm.value.password;
     this.unUtilisateur.telephone = this.profileForm.value.phone;
-    console.warn(this.unUtilisateur);
+    this.utilisateurService.createUtilisateur(this.unUtilisateur);
+    alert('utilisateur créee !');
+    this.router.navigate(['/login']);
   }
 
 }
