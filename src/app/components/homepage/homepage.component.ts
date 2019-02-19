@@ -17,25 +17,19 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.annonceService.getAnnonceList().subscribe(val => {
 
       this.listeAnnonce = val;
-   
       });
-
-
   }
 
   listeAnnonce: Array<Annonce> = this.annonceService.getAnnonce();
   listePhotoAnnonce: Array<Photos> = this.annonceService.getPhotoAnnonce();
 
   /* fonction qui gére le clic sur un article et récupére son id */
-  show_article(id) {
+  getIdArticle(id) {
 
    alert("Article :"+id)
   }
-
-
 
 }
