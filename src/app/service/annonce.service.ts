@@ -42,7 +42,7 @@ export class AnnonceService {
 
   getAnnonceList(): Observable<any> {
     //return this.listeTemp;
-    return this.http.get('http://10.1.14.24:59825/api/Annonces');
+    return this.http.get('http://localhost:59825/api/Annonces');
    
   }
 
