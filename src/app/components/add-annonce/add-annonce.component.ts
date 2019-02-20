@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { CategorieService } from './../../service/categorie.service';
 import { Annonce } from './../../class/annonce';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -18,11 +19,13 @@ export class AddAnnonceComponent implements OnInit {
   categories: Categorie[];
   error: any;
   navigated = false; // true if navigated here
+  fileSelected: any;
 
   constructor(
     private annonceService: AnnonceService,
     private categorieService: CategorieService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {}
 
   getCategories(): void {
@@ -50,6 +53,7 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   save(): void {
+    this.onUpload();
     console.log(this.annonce);
     this.annonceService.save(this.annonce).subscribe(annonce => {
       this.annonce = annonce; // saved hero, w/ id if new
@@ -62,6 +66,25 @@ export class AddAnnonceComponent implements OnInit {
     if (this.navigated) {
       window.history.back();
     }
+  }
+
+  /* Upload file */
+
+  onFileSelected(event) {
+    this.fileSelected = event.target.files[0];
+  }
+
+  onUpload() {
+
+    const fd = new FormData();
+    fd.append('image', this.fileSelected, this.fileSelected.name);
+
+    this.http.post('http://localhost:59825/api/upload', fd, {
+        reportProgress: true,
+        observe: 'events',
+
+      }).subscribe(val => {
+      });
   }
 
 }
