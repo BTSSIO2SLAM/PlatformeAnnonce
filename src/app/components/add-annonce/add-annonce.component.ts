@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { CategorieService } from './../../service/categorie.service';
 import { Annonce } from './../../class/annonce';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -20,6 +20,7 @@ export class AddAnnonceComponent implements OnInit {
   error: any;
   navigated = false; // true if navigated here
   fileSelected: any;
+  filePath: string;
 
   constructor(
     private annonceService: AnnonceService,
@@ -82,8 +83,8 @@ export class AddAnnonceComponent implements OnInit {
         reportProgress: true,
         observe: 'events',
 
-      }).subscribe(val => {
-        console.log('terminé');
+      }).subscribe((filePath) => {
+        console.log(filePath);
       });
 
   }
