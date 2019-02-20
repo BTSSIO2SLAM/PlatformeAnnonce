@@ -27,7 +27,7 @@ export class AnnonceService {
   }
 
   save(annonce: Annonce) {
-    console.log(annonce.Id);
+
     if (annonce.Id) {
       return this.put(annonce);
     }
