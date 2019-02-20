@@ -4,7 +4,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AnnonceService } from 'src/app/service/annonce.service';
 import { Categorie } from 'src/app/class/categorie';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
+import { Url } from 'url';
 
 @Component({
   selector: 'app-add-annonce',
@@ -19,14 +20,15 @@ export class AddAnnonceComponent implements OnInit {
   categories: Categorie[];
   error: any;
   navigated = false; // true if navigated here
-  fileSelected:any;
+  fileSelected: any;
+  filePath: string;
 
   constructor(
     private annonceService: AnnonceService,
     private categorieService: CategorieService,
     private route: ActivatedRoute,
     private http: HttpClient
-  ) {}
+  ) { }
 
   getCategories(): void {
     this.categorieService
@@ -39,7 +41,6 @@ export class AddAnnonceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-    console.log(this.categories);
     this.route.params.forEach((params: Params) => {
       if (params['Id'] !== undefined) {
         const id = +params['Id'];
@@ -53,7 +54,8 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   save(): void {
-    console.log(this.annonce);
+
+
     this.annonceService.save(this.annonce).subscribe(annonce => {
       this.annonce = annonce; // saved hero, w/ id if new
       this.goBack(annonce);
@@ -69,22 +71,37 @@ export class AddAnnonceComponent implements OnInit {
 
   /* Upload file */
 
-  onFileSelected(event){
-    this.fileSelected = event.target.files[0];  
+  onFileSelected(event) {
+    this.fileSelected = event.target.files[0];
   }
 
-  onUpload(){    
+  onUpload() {
     const fd = new FormData();
     fd.append('image', this.fileSelected, this.fileSelected.name);
 
-   this.http.post('http://localhost:59825/api/upload', fd, { 
-        reportProgress: true,
-        observe: 'events',
-    
-      }).subscribe(val => {
-        console.log('terminé');
-      });
- 
+    this.http.post('http://localhost:59825/api/upload', fd, {
+      reportProgress: true,
+      observe: 'events',
+
+    }).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        console.log(Math.round(event.loaded / event.total) * 100 + '%')
+      } else if (event.type === HttpEventType.Response) {
+
+        this.filePath = event.body.toString();
+        this.annonce.setUrlPhoto(this.filePath);
+        this.save();
+      }
+
+    })
+
+    /*subscribe((filePath:HttpResponse<string>)=> {
+
+     //this.filePath = filePath;
+     
+    console.log(filePath.body);
+    });*/
+
   }
 
 }

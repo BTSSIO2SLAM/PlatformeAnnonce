@@ -1,6 +1,4 @@
-import { Ville } from './ville';
 import { Categorie } from './categorie';
-import { Utilisateur } from './utilisateur';
 
 export class Annonce {
     Id: number;
@@ -11,4 +9,8 @@ export class Annonce {
     CategorieID: number;
     Categorie: Categorie;
     UtilisateurID: number;
+
+    public setUrlPhoto(UrlPhoto: string):void{
+        this.UrlPhoto = UrlPhoto;
+    }
 }
