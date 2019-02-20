@@ -1,9 +1,10 @@
+import { CategorieService } from './../../service/categorie.service';
 import { Annonce } from './../../class/annonce';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AnnonceService } from 'src/app/service/annonce.service';
-import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
-
+import { Categorie } from 'src/app/class/categorie';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-annonce',
@@ -11,25 +12,37 @@ import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/ht
   styleUrls: ['./add-annonce.component.css']
 })
 export class AddAnnonceComponent implements OnInit {
-  [x: string]: any;
 
   @Input() annonce: Annonce;
   @Output() close = new EventEmitter();
+
+  categories: Categorie[];
   error: any;
   navigated = false; // true if navigated here
-  fileSelected: File= null;
-  FileUpload;
+  fileSelected:any;
 
   constructor(
     private annonceService: AnnonceService,
+    private categorieService: CategorieService,
     private route: ActivatedRoute,
     private http: HttpClient
   ) {}
 
+  getCategories(): void {
+    this.categorieService
+      .getCategories()
+      .subscribe(
+        categories => (this.categories = categories),
+        error => (this.error = error)
+      );
+  }
+
   ngOnInit(): void {
+    this.getCategories();
+    console.log(this.categories);
     this.route.params.forEach((params: Params) => {
-      if (params['id'] !== undefined) {
-        const id = +params['id'];
+      if (params['Id'] !== undefined) {
+        const id = +params['Id'];
         this.navigated = true;
         this.annonceService.getAnnonce(id).subscribe(annonce => (this.annonce = annonce));
       } else {
@@ -40,11 +53,11 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   save(): void {
+    console.log(this.annonce);
     this.annonceService.save(this.annonce).subscribe(annonce => {
       this.annonce = annonce; // saved hero, w/ id if new
       this.goBack(annonce);
     }, error => (this.error = error)); // TODO: Display error message
-
   }
 
   goBack(savedAnnonce: Annonce = null): void {
@@ -57,24 +70,21 @@ export class AddAnnonceComponent implements OnInit {
   /* Upload file */
 
   onFileSelected(event){
-    this.fileSelected = <File>event.target.files[0];
-   
+    this.fileSelected = event.target.files[0];  
   }
 
   onUpload(){    
-
     const fd = new FormData();
     fd.append('image', this.fileSelected, this.fileSelected.name);
 
-    this.http. post('http://localhost:59825/api/upload', fd, { 
+   this.http.post('http://localhost:59825/api/upload', fd, { 
         reportProgress: true,
         observe: 'events',
     
-      })
-
-
+      }).subscribe(val => {
+        console.log('terminé');
+      });
  
   }
+
 }
-
-

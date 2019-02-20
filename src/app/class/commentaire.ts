@@ -3,9 +3,9 @@ import { Annonce } from './annonce';
 import { Utilisateur } from './utilisateur';
 
 export class Commentaire {
-  id:number;
-  contenu:string;
-  notation:Notation;
-  utilisateur:Utilisateur;
-  annonce:Annonce;
+  Id: number;
+  Contenu: string;
+  notation: Notation;
+  utilisateur: Utilisateur;
+  annonce: Annonce;
 }
