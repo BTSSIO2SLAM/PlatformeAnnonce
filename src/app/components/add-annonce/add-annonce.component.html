@@ -27,11 +27,18 @@
                 <label for="prix">Prix :</label>
                 <input [(ngModel)]="annonce.Prix" type="number" placeholder="Saisir un prix" name="prix" class="form-control" id="prix">
               </div>
-
-              <div class="form-group">
+              <div class="row">
+                <div class="form-group">
                   <label for="exampleFormControlFile1">Photo</label>
-                  <input [(ngModel)]="annonce.UrlPhoto" type="file" placeholder="Choisir une photo" name="photo" class="form-control-file" id="photo">
+                  <input [(ngModel)]="annonce.UrlPhoto" (change)="onFileSelected($event)"  type="file" placeholder="Choisir une photo" name="photo" class="form-control-file" id="photo">
                 </div>
+                
+                <div class="form-group">
+                  <input  (click)="onUpload()" type="submit" value="Upload" class="form-control-file " id="photo">
+                </div>
+                  
+              </div>
+              
               <hr>
               <button (click)="save()">Publier l'annonce</button>
 

@@ -2,6 +2,8 @@ import { Annonce } from './../../class/annonce';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AnnonceService } from 'src/app/service/annonce.service';
+import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-add-annonce',
@@ -9,15 +11,19 @@ import { AnnonceService } from 'src/app/service/annonce.service';
   styleUrls: ['./add-annonce.component.css']
 })
 export class AddAnnonceComponent implements OnInit {
+  [x: string]: any;
 
   @Input() annonce: Annonce;
   @Output() close = new EventEmitter();
   error: any;
   navigated = false; // true if navigated here
+  fileSelected: File= null;
+  FileUpload;
 
   constructor(
     private annonceService: AnnonceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +44,7 @@ export class AddAnnonceComponent implements OnInit {
       this.annonce = annonce; // saved hero, w/ id if new
       this.goBack(annonce);
     }, error => (this.error = error)); // TODO: Display error message
+
   }
 
   goBack(savedAnnonce: Annonce = null): void {
@@ -47,10 +54,27 @@ export class AddAnnonceComponent implements OnInit {
     }
   }
 
+  /* Upload file */
+
+  onFileSelected(event){
+    this.fileSelected = <File>event.target.files[0];
+   
+  }
+
+  onUpload(){    
+
+    const fd = new FormData();
+    fd.append('image', this.fileSelected, this.fileSelected.name);
+
+    this.http. post('http://localhost:59825/api/upload', fd, { 
+        reportProgress: true,
+        observe: 'events',
+    
+      })
+
+
+ 
+  }
 }
-
-
-
-
 
 
