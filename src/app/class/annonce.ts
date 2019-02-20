@@ -9,5 +9,6 @@ export class Annonce {
     Prix: number;
     UrlPhoto: string;
     CategorieID: number;
+    Categorie: Categorie;
     UtilisateurID: number;
 }

@@ -2,7 +2,7 @@ import { Annonce } from './../class/annonce';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
-import { Photos } from '../class/photos';
+import { Photo } from '../class/photo';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
@@ -27,6 +27,7 @@ export class AnnonceService {
   }
 
   save(annonce: Annonce) {
+    console.log(annonce.Id);
     if (annonce.Id) {
       return this.put(annonce);
     }
@@ -44,7 +45,7 @@ export class AnnonceService {
     });
 
     return this.http
-      .post<Annonce>(this.annonceUrl, Annonce)
+      .post<Annonce>(this.annonceUrl, annonce)
       .pipe(catchError(this.handleError));
   }
 

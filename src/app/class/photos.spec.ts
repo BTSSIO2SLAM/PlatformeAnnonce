@@ -1,7 +1,7 @@
-import { Photos } from './photos';
+import { Photo } from './photo';
 
-describe('Photos', () => {
+describe('Photo', () => {
   it('should create an instance', () => {
-    expect(new Photos()).toBeTruthy();
+    expect(new Photo()).toBeTruthy();
   });
 });
