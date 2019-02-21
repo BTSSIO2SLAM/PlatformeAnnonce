@@ -14,9 +14,22 @@
       <li class="nav-item ">
         <a class="nav-link" routerLink="/add-annonce">Publier une annonce</a>
       </li>
-        <li class="form-inline my-2 my-lg-0">
-          <a class="nav-link my-2 my-sm-0" routerLink="/login">Se connecter</a>
-        </li>
+
+      <div *ngIf="user; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+          <li class="form-inline my-2 my-lg-0">
+              <a class="nav-link my-2 my-sm-0" href="#">Mon compte</a>
+            </li>
+            <li class="form-inline my-2 my-lg-0">
+                <a class="nav-link my-2 my-sm-0" (click)="logout()" href="#">Se Déconnecter</a>
+            </li>
+      </ng-template>
+      <ng-template #elseBlock>
+          <li class="form-inline my-2 my-lg-0">
+              <a class="nav-link my-2 my-sm-0" routerLink="/login">Se connecter</a>
+            </li>
+      </ng-template>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Recherche.." aria-label="Search">
@@ -24,6 +37,5 @@
     </form>
   </div>
 </nav>
-
 
 <router-outlet></router-outlet>

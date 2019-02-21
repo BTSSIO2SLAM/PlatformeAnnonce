@@ -10,7 +10,7 @@ export class Annonce {
     Categorie: Categorie;
     UtilisateurID: number;
 
-    public setUrlPhoto(UrlPhoto: string):void{
+    public setUrlPhoto(UrlPhoto: string): void {
         this.UrlPhoto = UrlPhoto;
     }
 }
