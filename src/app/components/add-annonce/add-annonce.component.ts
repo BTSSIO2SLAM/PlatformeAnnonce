@@ -22,6 +22,8 @@ export class AddAnnonceComponent implements OnInit {
   navigated = false; // true if navigated here
   fileSelected: any;
   filePath: string;
+  progressPourcent: string;
+  status: number;
 
   constructor(
     private annonceService: AnnonceService,
@@ -51,11 +53,16 @@ export class AddAnnonceComponent implements OnInit {
         this.annonce = new Annonce();
       }
     });
+
+    
   }
 
   save(): void {
 
+<<<<<<< HEAD
     console.log(this.annonce);
+=======
+>>>>>>> 25c0de14e9b33e21947c107454bedfdf7c17eba9
     this.annonceService.save(this.annonce).subscribe(annonce => {
       this.annonce = annonce; // saved hero, w/ id if new
       this.goBack(annonce);
@@ -73,6 +80,7 @@ export class AddAnnonceComponent implements OnInit {
 
   onFileSelected(event) {
     this.fileSelected = event.target.files[0];
+
   }
 
   onUpload() {
@@ -81,20 +89,38 @@ export class AddAnnonceComponent implements OnInit {
 
     this.http.post('http://localhost:59825/api/upload', fd, {
       reportProgress: true,
-      observe: 'events',
+      observe: 'events'
 
     }).subscribe(event => {
+     
       if (event.type === HttpEventType.UploadProgress) {
-        console.log(Math.round(event.loaded / event.total) * 100 + '%');
-      } else if (event.type === HttpEventType.Response) {
+       this.progressPourcent =  (Math.round(event.loaded / event.total * 100) + '%') ;
+      
+       console.log(this.progressPourcent);
+      
 
+      } else if (event.type === HttpEventType.Response) {
         this.filePath = event.body.toString();
         this.annonce.setUrlPhoto(this.filePath);
+<<<<<<< HEAD
         console.log(this.annonce);
+=======
+        this.status = event.status;  
+
+       // console.log(event);
+       
+      
+>>>>>>> 25c0de14e9b33e21947c107454bedfdf7c17eba9
         this.save();
       }
+    })
 
-    });
+   
+  
+
+    
+  
+
 
   }
 
