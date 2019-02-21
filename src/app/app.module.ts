@@ -16,6 +16,7 @@ import { AddAnnonceComponent } from './components/add-annonce/add-annonce.compon
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     AddAnnonceComponent,
-    AnnonceComponent
+    AnnonceComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

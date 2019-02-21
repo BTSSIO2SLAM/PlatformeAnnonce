@@ -1,7 +1,9 @@
+import { AlertService } from './../../service/alert.service';
 import { AuthenticationService } from './../../service/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService
 ) { }
 
   ngOnInit() {
@@ -33,7 +36,7 @@ export class LoginComponent implements OnInit {
     // this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     // convenience getter for easy access to form fields
@@ -47,14 +50,16 @@ export class LoginComponent implements OnInit {
         }
         this.loading = true;
 
-        if (this.authenticationService.login(this.f.pseudo.value, this.f.password.value)) {
-          this.router.navigate(['/myaccount']);
-        } else {
-          this.router.navigate(['/login']);
-          alert('identifiants invalide');
-          this.loading = false;
-          this.submitted = false;
-        }
-        
+        this.authenticationService.login(this.f.pseudo.value, this.f.password.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigate([this.returnUrl]);
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                });
+
     }
 }
