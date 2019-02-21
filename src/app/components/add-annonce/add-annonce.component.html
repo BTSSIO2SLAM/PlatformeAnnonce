@@ -33,7 +33,7 @@
                   <label for="exampleFormControlFile1">Photo</label>
                   <input [(ngModel)]="annonce.UrlPhoto" (change)="onFileSelected($event)"  type="file" placeholder="Choisir une photo" name="photo" class="form-control-file" id="photo">
                 </div>
-                
+
               </div>
               <!--style="width: 75%"-->
               <div *ngIf="progressPourcent">
@@ -42,8 +42,8 @@
                 </div>
 
               </div>
-              
-                           
+
+
               <hr>
               <button (click)="onUpload()"  >Publier l'annonce</button>
 

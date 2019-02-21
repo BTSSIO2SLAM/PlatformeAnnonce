@@ -6,6 +6,8 @@ import { AnnonceService } from 'src/app/service/annonce.service';
 import { Categorie } from 'src/app/class/categorie';
 import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { Url } from 'url';
+import { LocaleDataIndex } from '@angular/common/src/i18n/locale_data';
+import { Utilisateur } from 'src/app/class/utilisateur';
 
 @Component({
   selector: 'app-add-annonce',
@@ -24,6 +26,7 @@ export class AddAnnonceComponent implements OnInit {
   filePath: string;
   progressPourcent: string;
   status: number;
+  user: Utilisateur;
 
   constructor(
     private annonceService: AnnonceService,
@@ -105,7 +108,7 @@ export class AddAnnonceComponent implements OnInit {
 
         this.save();
       }
-    })
+    });
 
 
 

@@ -8,8 +8,8 @@
 
                     <div class="card-horizontal" (click)="getIdArticle(annonce.Id)" >
 
-                        <div class="card" style="width: 18rem;" *ngIf='annonce.UrlPhoto == ""; else notShow'>
-                            <img class="card-img-top" src='../assets/default.png' alt="Card image cap">
+                        <div  class="card" style="width: 18rem;" *ngIf='annonce.UrlPhoto == ""; else notShow'>
+                            <img style="background-size: cover;"  class="card-img-top" src='../assets/default.png' alt="Card image cap">
                         </div>
                         <ng-template #notShow>
                             <div class="card" style="width: 18rem; ">

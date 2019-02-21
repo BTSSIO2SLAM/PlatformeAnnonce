@@ -6,7 +6,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div #menu (click)='Refresh()'  class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div #menu class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
         <a class="nav-link" routerLink="/homepage">Voir les annonces</a>
@@ -18,7 +18,7 @@
       <div *ngIf="authenticationService.isLogged; then thenBlock else elseBlock"></div>
       <ng-template #thenBlock>
           <li class="form-inline my-2 my-lg-0">
-              <a class="nav-link my-2 my-sm-0" href="#">Mon compte</a>
+              <a class="nav-link my-2 my-sm-0" routerLink="/myaccount">Mon compte</a>
             </li>
             <li class="form-inline my-2 my-lg-0">
                 <a class="nav-link my-2 my-sm-0" (click)="logout()" href="#">Se Déconnecter</a>

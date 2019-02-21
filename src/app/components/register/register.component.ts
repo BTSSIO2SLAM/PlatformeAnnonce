@@ -34,11 +34,11 @@ export class RegisterComponent implements OnInit {
   registerMe() {
 
     /* Assign l'utilisateur aux valeurs */
-    this.unUtilisateur.nom = this.profileForm.value.nom;
-    this.unUtilisateur.prenom = this.profileForm.value.prenom;
-    this.unUtilisateur.email = this.profileForm.value.mail;
-    this.unUtilisateur.password = this.profileForm.value.password;
-    this.unUtilisateur.telephone = this.profileForm.value.phone;
+    this.unUtilisateur.Nom = this.profileForm.value.nom;
+    this.unUtilisateur.Prenom = this.profileForm.value.prenom;
+    this.unUtilisateur.Email = this.profileForm.value.mail;
+    this.unUtilisateur.Password = this.profileForm.value.password;
+    this.unUtilisateur.Telephone = this.profileForm.value.phone;
     this.utilisateurService.createUtilisateur(this.unUtilisateur);
     alert('utilisateur créee !');
     this.router.navigate(['/login']);

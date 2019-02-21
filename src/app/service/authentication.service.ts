@@ -13,7 +13,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<Utilisateur>;
   public currentUser: Observable<Utilisateur>;
   listeUtilisateurs: Array<Utilisateur>;
-  isLogged: boolean = false;
+  isLogged = false;
 
   constructor(private http: HttpClient) { }
 
