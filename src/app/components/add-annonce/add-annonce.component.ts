@@ -54,7 +54,7 @@ export class AddAnnonceComponent implements OnInit {
       }
     });
 
-    
+
   }
 
   save(): void {
@@ -92,34 +92,30 @@ export class AddAnnonceComponent implements OnInit {
       observe: 'events'
 
     }).subscribe(event => {
-     
+
       if (event.type === HttpEventType.UploadProgress) {
        this.progressPourcent =  (Math.round(event.loaded / event.total * 100) + '%') ;
-      
+
        console.log(this.progressPourcent);
-      
+
 
       } else if (event.type === HttpEventType.Response) {
         this.filePath = event.body.toString();
         this.annonce.setUrlPhoto(this.filePath);
-<<<<<<< HEAD
-        console.log(this.annonce);
-=======
-        this.status = event.status;  
+        this.status = event.status;
 
        // console.log(event);
-       
-      
->>>>>>> 25c0de14e9b33e21947c107454bedfdf7c17eba9
+
+
         this.save();
       }
     })
 
-   
-  
 
-    
-  
+
+
+
+
 
 
   }
