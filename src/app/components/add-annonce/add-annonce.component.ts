@@ -74,7 +74,6 @@ export class AddAnnonceComponent implements OnInit {
 
   /* Upload file */
 
-
   onFileSelected(event) {
     this.fileSelected = event.target.files[0];
 
@@ -91,15 +90,10 @@ export class AddAnnonceComponent implements OnInit {
     }).subscribe(event => {
      
       if (event.type === HttpEventType.UploadProgress) {
-<<<<<<< HEAD
        this.progressPourcent =  (Math.round(event.loaded / event.total * 100) + '%') ;
       
        console.log(this.progressPourcent);
       
-=======
-        console.log(Math.round(event.loaded / event.total) * 100 + '%');
-      } else if (event.type === HttpEventType.Response) {
->>>>>>> 7ddf246867f219b4afc5e0965567a0725f73ddef
 
       } else if (event.type === HttpEventType.Response) {
         this.filePath = event.body.toString();
@@ -111,7 +105,6 @@ export class AddAnnonceComponent implements OnInit {
       
         this.save();
       }
-<<<<<<< HEAD
     })
 
    
@@ -120,10 +113,6 @@ export class AddAnnonceComponent implements OnInit {
     
   
 
-=======
-
-    });
->>>>>>> 7ddf246867f219b4afc5e0965567a0725f73ddef
 
   }
 

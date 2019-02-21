@@ -28,11 +28,12 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.getAnnonces();
-    console.log(this.annonces);
+   
   }
 
   onSelect(annonce: Annonce): void {
     this.selectedAnnonce = annonce;
+    
   }
 
   gotoDetail(): void {
@@ -42,6 +43,7 @@ export class HomepageComponent implements OnInit {
   /* fonction qui gére le clic sur un article et récupére son id */
   getIdArticle(id) {
    alert('Article :' + id);
+   console.log(this.annonces);
   }
 
 }
