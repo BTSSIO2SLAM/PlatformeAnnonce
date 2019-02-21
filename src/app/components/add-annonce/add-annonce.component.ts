@@ -59,10 +59,6 @@ export class AddAnnonceComponent implements OnInit {
 
   save(): void {
 
-<<<<<<< HEAD
-    console.log(this.annonce);
-=======
->>>>>>> 25c0de14e9b33e21947c107454bedfdf7c17eba9
     this.annonceService.save(this.annonce).subscribe(annonce => {
       this.annonce = annonce; // saved hero, w/ id if new
       this.goBack(annonce);
