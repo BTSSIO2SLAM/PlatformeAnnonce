@@ -6,7 +6,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div #menu (click)='Refresh()'  class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
         <a class="nav-link" routerLink="/homepage">Voir les annonces</a>
@@ -15,7 +15,7 @@
         <a class="nav-link" routerLink="/add-annonce">Publier une annonce</a>
       </li>
 
-      <div *ngIf="user; then thenBlock else elseBlock"></div>
+      <div *ngIf="authenticationService.isLogged; then thenBlock else elseBlock"></div>
       <ng-template #thenBlock>
           <li class="form-inline my-2 my-lg-0">
               <a class="nav-link my-2 my-sm-0" href="#">Mon compte</a>
@@ -25,8 +25,8 @@
             </li>
       </ng-template>
       <ng-template #elseBlock>
-          <li class="form-inline my-2 my-lg-0">
-              <a class="nav-link my-2 my-sm-0" routerLink="/login">Se connecter</a>
+          <li  class="form-inline my-2 my-lg-0">
+              <a  class="nav-link my-2 my-sm-0" routerLink="/login">Se connecter</a>
             </li>
       </ng-template>
 

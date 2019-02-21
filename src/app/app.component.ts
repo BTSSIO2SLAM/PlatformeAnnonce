@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Utilisateur } from './class/utilisateur';
 import { AuthenticationService } from './service/authentication.service';
 
@@ -11,12 +11,13 @@ import { AuthenticationService } from './service/authentication.service';
 export class AppComponent {
   title = 'PlatformeAnnonce';
   user: any = localStorage.getItem('currentUser');
+  menu: ElementRef;
 
-constructor( private authenticationService: AuthenticationService ) { }
+  constructor( public authenticationService: AuthenticationService ) { }
 
-logout() {
-  this.authenticationService.logout();
-}
+  logout() {
+    this.authenticationService.logout();
+  }
 
 
 }

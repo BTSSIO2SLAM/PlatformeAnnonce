@@ -55,7 +55,7 @@ export class AddAnnonceComponent implements OnInit {
 
   save(): void {
 
-
+    console.log(this.annonce);
     this.annonceService.save(this.annonce).subscribe(annonce => {
       this.annonce = annonce; // saved hero, w/ id if new
       this.goBack(annonce);
@@ -90,6 +90,7 @@ export class AddAnnonceComponent implements OnInit {
 
         this.filePath = event.body.toString();
         this.annonce.setUrlPhoto(this.filePath);
+        console.log(this.annonce);
         this.save();
       }
 

@@ -13,7 +13,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<Utilisateur>;
   public currentUser: Observable<Utilisateur>;
   listeUtilisateurs: Array<Utilisateur>;
-  isLogged: boolean;
+  isLogged: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -28,6 +28,7 @@ export class AuthenticationService {
             if (user) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
+                this.isLogged = true;
             }
             return user;
         }));
@@ -36,6 +37,7 @@ export class AuthenticationService {
   logout() {
       // remove user from local storage to log user out
       localStorage.removeItem('currentUser');
+      this.isLogged = false;
   }
 
 }
