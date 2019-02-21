@@ -35,7 +35,15 @@
                 </div>
                 
               </div>
+              <!--style="width: 75%"-->
+              <div *ngIf="progressPourcent">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" [style.width]="progressPourcent" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" >{{progressPourcent}}</div>
+                </div>
+
+              </div>
               
+                           
               <hr>
               <button (click)="onUpload()"  >Publier l'annonce</button>
 
