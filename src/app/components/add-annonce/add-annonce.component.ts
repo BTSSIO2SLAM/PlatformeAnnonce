@@ -101,6 +101,8 @@ export class AddAnnonceComponent implements OnInit {
       } else if (event.type === HttpEventType.Response) {
         this.filePath = event.body.toString();
         this.annonce.setUrlPhoto(this.filePath);
+        this.user = JSON.parse(localStorage.getItem('currentUser'))['user'];
+        this.annonce.UtilisateurID = this.user.Id;
         this.status = event.status;
 
        // console.log(event);

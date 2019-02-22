@@ -10,8 +10,8 @@
           <div class="card-body">
               <div class="form-group">
                 <label for="titre">Categorie:</label>
-                <select [(ngModel)]="annonce.Categorie"  class="form-control" id="exampleFormControlSelect1">
-                    <option *ngFor="let categorie of categories" [ngValue]="categorie">{{categorie.Libelle}}</option>
+                <select [(ngModel)]="annonce.CategorieID"  class="form-control" id="exampleFormControlSelect1">
+                    <option *ngFor="let categorie of categories" [ngValue]="categorie.Id">{{categorie.Libelle}}</option>
                 </select>
               </div>
 

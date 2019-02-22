@@ -6,4 +6,8 @@ export class Utilisateur {
   Prenom: string;
   Telephone: string;
   Email: string;
+
+  public getUsername(): string {
+    return this.Username;
+}
 }

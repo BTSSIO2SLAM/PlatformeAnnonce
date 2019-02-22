@@ -12,6 +12,10 @@ export class Annonce {
     UtilisateurID: number;
     Utilisateur: Utilisateur;
 
+  public getUtilisateur(): Utilisateur {
+      return this.Utilisateur;
+  }
+
     public setUrlPhoto(UrlPhoto: string): void {
         this.UrlPhoto = UrlPhoto;
     }
