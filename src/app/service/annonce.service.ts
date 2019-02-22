@@ -10,7 +10,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class AnnonceService {
 
-  private annonceUrl = 'http://localhost:59825/api/Annonces'; // URL to web api
+   annonceUrl = 'http://localhost:59825/api/Annonces'; // URL to web api
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +18,11 @@ export class AnnonceService {
     return this.http
       .get<Annonce[]>(this.annonceUrl)
       .pipe(map(data => data), catchError(this.handleError));
+  }
+
+  getAnnonceAPITest(): Observable<any> {
+    //return this.listeTemp;
+    return this.http.get('http://localhost:59825/api/Annonces');
   }
 
   getAnnonce(id: number): Observable<Annonce> {

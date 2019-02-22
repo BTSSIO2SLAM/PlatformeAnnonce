@@ -6,7 +6,7 @@ describe('AlertComponent', () => {
   let component: AlertComponent;
   let fixture: ComponentFixture<AlertComponent>;
 
-  beforeEach(async(() => {
+  /*beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AlertComponent ]
     })
@@ -21,5 +21,6 @@ describe('AlertComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  });*/
+
 });

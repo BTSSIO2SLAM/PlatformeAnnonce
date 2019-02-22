@@ -17,10 +17,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './components/alert/alert.component';
-
-
-
-
+import { AnnonceService } from './service/annonce.service'
+import {RouterTestingModule} from '@angular/router/testing';
+//import { HttpClientTestingModule} from '@angular/common/http/testing';
 
 @NgModule({
   declarations: [
@@ -32,10 +31,11 @@ import { AlertComponent } from './components/alert/alert.component';
     RegisterComponent,
     AddAnnonceComponent,
     AnnonceComponent,
-    AlertComponent
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
@@ -54,7 +54,9 @@ import { AlertComponent } from './components/alert/alert.component';
     MatCardModule,
     MatTableModule,
     MatDialogModule,
-    HttpClientModule
+    RouterTestingModule,
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

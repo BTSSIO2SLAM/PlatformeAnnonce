@@ -28,6 +28,9 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.getAnnonces();
+    this.annonceService.getAnnonceAPITest().subscribe(data => {
+      console.log(data[0].Titre);
+    })
    
   }
 
